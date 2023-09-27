@@ -1,0 +1,112 @@
+
+1)Create table 
+stud(id,name) (use I'd as primary key)
+stud_details(id,city,mobileno) (Use I'd as foreign key)
+2)Insert minimum 10 records for each table.
+
+create table stud1
+(
+id int primary key,
+name varchar(15)
+);
+insert into stud1 values(1,'diya');
+insert into stud1 values(2,'riya');
+insert into stud1 values(3,'ajay');
+insert into stud1 values(4,'jay');
+insert into stud1 values(5,'dhruv');
+insert into stud1 values(6,'dhruvi');
+insert into stud1 values(7,'nidhi');
+insert into stud1 values(8,'het');
+insert into stud1 values(9,'bhargav');
+insert into stud1 values(10,'tanvi');
+
+create table
+stud_detail
+(
+id int references stud1,
+city varchar(15),
+mobile_no int
+);
+
+select * from stud1;
++----+---------+
+| id |  name   |
++----+---------+
+| 1  | diya    |
+| 2  | riya    |
+| 3  | ajay    |
+| 4  | jay     |
+| 5  | dhruv   |
+| 6  | dhruvi  |
+| 7  | nidhi   |
+| 8  | het     |
+| 9  | bhargav |
+| 10 | tanvi   |
++----+---------+
+
+
+insert into stud1 values(10,'tanvi');
+create table
+stud_detail
+(
+id int references stud1,
+city varchar(15),
+mobile_no int
+);
+insert into stud_detail values(1,'surat',9099876890);
+insert into stud_detail values(2,'bangluru',9099876222);
+insert into stud_detail values(3,'navsari',7789650998);
+insert into stud_detail values(4,'navsari',7722250998);
+insert into stud_detail values(5,'mumbai',9876578900);
+insert into stud_detail values(6,'ahemedabad',8878909953);
+insert into stud_detail values(7,'valsad',9999543377);
+insert into stud_detail values(8,'delhi',8899543377);
+insert into stud_detail values(9,'kolkata',1234567899);
+insert into stud_detail values(10,'bhopal',7734567899);
+select * from stud_detail;
++----+------------+------------+
+| id |    city    | mobile_no  |
++----+------------+------------+
+| 1  | surat      | 9099876890 |
+| 2  | bangluru   | 9099876222 |
+| 3  | navsari    | 7789650998 |
+| 4  | navsari    | 7722250998 |
+| 5  | mumbai     | 9876578900 |
+| 6  | ahemedabad | 8878909953 |
+| 7  | valsad     | 9999543377 |
+| 8  | delhi      | 8899543377 |
+| 9  | kolkata    | 1234567899 |
+| 10 | bhopal     | 7734567899 |
++----+------------+------------+
+
+3)Display whose student come from the Surat City.
+->select * from stud_detail where city="surat";
+1|surat|9099876890
+
+4)Display student details whose city name start with 'B'.
+->select * from stud_detail where city like "b_%";
++----+----------+------------+
+| id |   city   | mobile_no  |
++----+----------+------------+
+| 2  | bangluru | 9099876222 |
+| 10 | bhopal   | 7734567899 |
++----+----------+------------+
+
+
+5)Update mobileno who are comming from 'Surat'
+->update stud_detail set mobile_no="9999999988" where city="surat";
+  select * from stud_detail;
++----+------------+------------+
+| id |    city    | mobile_no  |
++----+------------+------------+
+| 1  | surat      | 9999999988 |
+| 2  | bangluru   | 9099876222 |
+| 3  | navsari    | 7789650998 |
+| 4  | navsari    | 7722250998 |
+| 5  | mumbai     | 9876578900 |
+| 6  | ahemedabad | 8878909953 |
+| 7  | valsad     | 9999543377 |
+| 8  | delhi      | 8899543377 |
+| 9  | kolkata    | 1234567899 |
+| 10 | bhopal     | 7734567899 |
++----+------------+------------+
